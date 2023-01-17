@@ -1,28 +1,28 @@
+<?php     
+ require_once dirname(__DIR__) . '/controle/AdminController.php';
+ $loginController = new AdminController();
+ if(isset($_POST['SignIn'])) $loginController->SignIn();
+?>
 
- <div class ="row justify-content-center">
-    <div class ="col-8">
-    <form class=" justify-content-center px-4 col-4 py-3">
-    <div class="mb-3">
-      <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-    </div>
-    <div class="mb-3">
-      <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-    </div>
-    <div class="mb-3">
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-        <label class="form-check-label" for="dropdownCheck">
-          Remember me
-        </label>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </form>
-  <a class="dropdown-item" href="#">New around here? Sign up</a>
-  <a class="dropdown-item" href="#">Forgot password?</a>
-    </div>
-
- </div>
- 
+<div class="row login d-flex justify-content-center">
+    <div class="col-8 d-flex justify-content-center">
+    <?php include('./includes/alerts.php');?>
+            <form class="row g-3 w-50 " method="post" >
+                <h1 class=" fw-bold  font-monospace  text-center">Login</h1>
+                    <div class="col-12 ">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control inputColor" id="inputEmail4" placeholder="Email@gmail.com"  required>
+                    </div>
+                    <div class="col-12 ">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="inputPassword4" placeholder="*********" required >
+                    </div>
+                
+                    <div class="col-12">
+                        <button type="submit" name="SignIn" class="btn btn-primary">Sign in</button>
+                    </div>
+                    <p class=""><a href="?page=Singin" class="text-decoration-none"> Create Account !! </a></p>
+                    <p class="text-center">Not a member yet? Choose a <br> <strong> BlogCultureDev </strong> plan and get started now!</p>
+            </form>
+    </div>      
+</div>

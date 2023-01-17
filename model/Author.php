@@ -19,8 +19,8 @@ class Author extends Person
         $stmt -> bindParam(':last_name', $data['last_name']);
         try {
             $stmt -> execute();
-            $stmt->close();
-            $stmt = NULL ;
+            // $stmt->close();
+            // $stmt = NULL ;
             return 1 ;
         } catch (Exception $e) {
            return $e ;
@@ -32,8 +32,8 @@ class Author extends Person
         $stmt = database::connect() -> prepare($sql);
         $stmt -> execute();
         return $stmt->fetchAll();
-        $stmt ->close();
-        $stmt =null ;
+        // $stmt ->close();
+        // $stmt =null ;
     }
 
 }

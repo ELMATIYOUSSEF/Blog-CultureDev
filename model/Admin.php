@@ -9,26 +9,25 @@ class Admin extends Person
     protected string $email;
 
    
-    public function __construct(int $id, string $first_name, string $last_name, $category, string $password, string $email)
+    public function __construct( string $first_name, string $last_name, string $password, string $email)
     {
-        parent::__construct($id, $first_name, $last_name);
+        parent::__construct($first_name, $last_name);
     }
 
 
     static public function createAdmin($data)
     {
-        $sql= 'insert into admin (first_name,last_name,category,password,email) values(:first_name,:last_name,:category,:password,:email)';
+        $sql= 'insert into admin (first_name,last_name,Email,PassWord) values(:first_name,:last_name ,:Email,:PassWord)';
         $stmt  = database::connect()->prepare($sql);
         $stmt -> bindParam(':first_name',$data['first_name']);
         $stmt -> bindParam(':first_name', $data['last_name']);
-        $stmt -> bindParam(':category',$data['category']);
-        $stmt -> bindParam(':password',$data['password']);
-        $stmt -> bindParam(':email',$data['email']);
+        $stmt -> bindParam(':Email',$data['Email']);
+        $stmt -> bindParam(':PassWord',$data['PassWord']);
         try {
             $stmt -> execute();
             return 1 ;
-            $stmt->close();
-            $stmt = NULL ;
+            // $stmt->close();
+            // $stmt = NULL ;
         } catch (Exception $e) {
            return $e ;
         }
@@ -42,8 +41,8 @@ class Admin extends Person
         $stmt -> bindParam(':id',$id);
         $stmt -> execute();
         return true;
-        $stmt ->close();
-        $stmt =null ;
+        // $stmt ->close();
+        // $stmt =null ;
     }
 
    
@@ -54,8 +53,8 @@ class Admin extends Person
         $stmt -> bindParam(':id',$id);
         $stmt -> execute();
         return $stmt->fetchAll();
-        $stmt ->close();
-        $stmt =null ;
+        // $stmt ->close();
+        // $stmt =null ;
     }
      static public function updatAdmin( $id )
     {
@@ -68,8 +67,17 @@ class Admin extends Person
         $stmt = database::connect() -> prepare($sql);
         $stmt -> execute();
         return $stmt->fetchAll();
-        $stmt ->close();
-        $stmt =null ;
+        // $stmt ->close();
+        // $stmt =null ;
+    }
+    static function getEmailDb($email){
+        $sql = "SELECT * FROM admin WHERE Email='$email'";
+        $stmt = database::connect()-> prepare($sql);
+        $stmt -> execute();
+        $result=$stmt->fetchAll();
+        return $result;
+        // $stmt ->close();
+        // $stmt =null ;
     }
     
 }

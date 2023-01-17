@@ -43,8 +43,8 @@ class Article
         } catch (Exception $e) {
            return $e ;
         }
-        $stmt->close();
-        $stmt = NULL ;
+        // $stmt->close();
+        // $stmt = NULL ;
     }
 
     static public function getAllArticle()
@@ -53,8 +53,9 @@ class Article
         $stmt = database::connect() -> prepare($sql);
         $stmt -> execute();
         return $stmt->fetchAll();
-        $stmt ->close();
-        $stmt =null ;// sa c'est just pour evete loverture de l'aconnection 
+        // $stmt ->close();
+        // $stmt =null ;
+        // sa c'est just pour evete loverture de l'aconnection 
     }
 
     static public function updatArticle( $id)
@@ -64,7 +65,7 @@ class Article
 
     static public function deleteArticle($id)
     {
-        $sql ="sdelete from article where id=:id";
+        $sql ="delete from article where id=:id";
         $stmt = database::connect() -> prepare($sql);
         $stmt -> bindParam(':id',$id);
         $stmt -> execute();
@@ -79,8 +80,8 @@ class Article
         $stmt -> bindParam(':id',$id);
         $stmt -> execute();
         return $stmt->fetchAll();
-        $stmt ->close();
-        $stmt =null ;
+        // $stmt ->close();
+        // $stmt =null ;
     }
 
 

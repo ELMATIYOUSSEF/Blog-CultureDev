@@ -26,8 +26,8 @@ class Category
         try {
             $stmt -> execute();
             return 1 ;
-            $stmt->close();
-            $stmt = NULL ;
+            // $stmt->close();
+            // $stmt = NULL ;
         } catch (Exception $e) {
            return $e ;
         }
@@ -38,10 +38,10 @@ class Category
         $stmt = database::connect() -> prepare($sql);
         $stmt -> execute();
         return $stmt->fetchAll();
-        $stmt ->close();
-        $stmt =null ;// sa c'est just pour evete loverture de l'aconnection 
+        // $stmt ->close();
+        // $stmt =null ;
     }
 
-    // createCategory($name);
+ 
 
 }

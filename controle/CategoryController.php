@@ -10,7 +10,7 @@ class CategoryController{
         if (isset($_POST['submit'])){
             $name =$_POST['name'];
         };
-        $result = Category::createCategory($data);
+        $result = Category::createCategory($name);
         if($result ==1){
             Session::set('Success','Category Ajoute avec success');
             Redirect::to('home');

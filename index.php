@@ -6,7 +6,7 @@ require_once './view/includes/header.php';
 
 $home = new HomeController();
 //all MY Page 
-$pages =['home','login',''];
+$pages =['home','login','Singin'];
 // function for detecte wich page usr wont
 if(isset($_GET['page'])){
     if(in_array($_GET['page'],$pages)){
