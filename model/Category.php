@@ -41,6 +41,25 @@ class Category
         // $stmt ->close();
         // $stmt =null ;
     }
+    static public function deleteCategory($id)
+    {
+        $sql ="delete from category where id=:id";
+        $stmt = database::connect() -> prepare($sql);
+        $stmt -> bindParam(':id',$id);
+        $stmt -> execute();
+        return 1;
+        // $stmt ->close();
+        // $stmt =null ;
+    }
+    static public function updatCategory( $id, $name)
+    {
+        $sql = "UPDATE category SET name = :name WHERE Id =:id";
+        $stmt = database::connect() -> prepare($sql);
+        $stmt -> bindParam(':name',$name);
+        $stmt -> bindParam(':id',$id);
+        $stmt -> execute();
+        return 1;
+    }
 
  
 

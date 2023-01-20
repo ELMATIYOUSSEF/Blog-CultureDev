@@ -3,10 +3,9 @@
  $loginController = new AdminController();
  if(isset($_POST['SignUp'])) $loginController->create_C_Admin();
 ?>
-
+ <?php include('includes/alerts.php');?>
 <div class="row login d-flex justify-content-center">
     <div class="col-8 d-flex justify-content-center">
-    <?php include('./includes/alerts.php');?>
             <form class="row g-3 w-50 " method="post">
                    <h1 class=" fw-bold  font-monospace ">Create new Account</h1>
                    <div class="col-6 ">

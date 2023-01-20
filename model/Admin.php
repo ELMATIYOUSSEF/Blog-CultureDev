@@ -20,11 +20,12 @@ class Admin extends Person
         $sql= 'insert into admin (first_name,last_name,Email,PassWord) values(:first_name,:last_name ,:Email,:PassWord)';
         $stmt  = database::connect()->prepare($sql);
         $stmt -> bindParam(':first_name',$data['first_name']);
-        $stmt -> bindParam(':first_name', $data['last_name']);
+        $stmt -> bindParam(':last_name', $data['last_name']);
         $stmt -> bindParam(':Email',$data['Email']);
         $stmt -> bindParam(':PassWord',$data['PassWord']);
         try {
             $stmt -> execute();
+            echo("ttttttt");
             return 1 ;
             // $stmt->close();
             // $stmt = NULL ;

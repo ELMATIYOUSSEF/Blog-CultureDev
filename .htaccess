@@ -1,7 +1,9 @@
-Options All -Indexefa-spin
+Options All -Indexes
 
-RewriteEngine On 
+RewriteEngine On
 
-RewriteBase/BlogCultureDev/
+RewriteBase /BlogCultureDev/
 
-RewriteRule ^([-a-zA-Z0-9]+)$ index.php?page=$1 
+RewriteCond %{REQUEST_URI} !\.js$
+
+RewriteRule ^([-a-zA-Z0-9]+)$ index.php?page=$1

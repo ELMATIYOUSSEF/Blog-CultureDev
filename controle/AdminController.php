@@ -23,10 +23,11 @@ class AdminController{
             $email = filter_var($_POST['SigninEmail'], FILTER_VALIDATE_EMAIL);
             $password = htmlspecialchars(trim(password_hash($_POST['SigninPassWord'], PASSWORD_BCRYPT)));
             if (!empty($name) && !empty($last_name) && !empty($password) && !empty($email)) {
-              
+                $count=0;
                 $result = Admin::getEmailDb($email);
-               
-                $count = $result->rowCount();
+               foreach ($result as $key ) {
+                $count++;
+               }
                 if ($count == 0) {
                     $data = array('first_name' => $name, 'last_name' => $last_name, 'Email' => $email, 'PassWord' => $password);
                     $result = Admin::createAdmin($data);
@@ -40,21 +41,24 @@ class AdminController{
                     Redirect::to('Singin');
                 }
             } else {
-                Session::set('error', 'check your informations');
+                Session::set('error','check your informations');
                 Redirect::to('Singin');
             }
         }
 }
     
 public function SignIn(){
-    global $connection;
     $email=$_POST['email'];
     $password=$_POST['password'];    
     $result = Admin::getEmailDb($email);
-    if (password_verify($password, $result['PassWord'])) 
+
+   
+    if (password_verify($password, $result[0][4]))
     {
-        if($result['Email'] == $email)
+        if($result[0][3] == $email)
             {
+                $_SESSION['admin']='true';
+                Session::set('info','welcom '.$result[0][1]);
                 Redirect::to('home');
             }
         else

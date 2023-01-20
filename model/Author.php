@@ -35,5 +35,27 @@ class Author extends Person
         // $stmt ->close();
         // $stmt =null ;
     }
+     
+    static public function deleteAuthor($id)
+    {
+        $sql ="delete from author where id=:id";
+        $stmt = database::connect() -> prepare($sql);
+        $stmt -> bindParam(':id',$id);
+        $stmt -> execute();
+        return 1;
+        // $stmt ->close();
+        // $stmt =null ;
+    }
+    static public function updatauthor( $id, $first,$last)
+    {
+        $sql = "UPDATE author SET first_name = :first_name, last_name = :last_name WHERE Id =:id";
+        $stmt = database::connect() -> prepare($sql);
+        $stmt -> bindParam(':first_name',$first);
+        $stmt -> bindParam(':last_name',$last);
+        $stmt -> bindParam(':id',$id);
+        $stmt -> execute();
+        return 1;
+    }
+
 
 }

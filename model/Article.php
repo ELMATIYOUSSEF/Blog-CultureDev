@@ -55,7 +55,6 @@ class Article
         return $stmt->fetchAll();
         // $stmt ->close();
         // $stmt =null ;
-        // sa c'est just pour evete loverture de l'aconnection 
     }
 
     static public function updatArticle( $id)

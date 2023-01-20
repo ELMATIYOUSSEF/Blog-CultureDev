@@ -3,48 +3,48 @@
     <ul class=" d-flex flex-column list-inline ">
         <li class="text-center py-4  list-group-item">
             <a href="#" class="logo  ">
-                <img class="w-50 " src="../../asset/img/digitallogo.png" alt="">
+                <img class="w-50 " src="../../BlogCultureDev/asset/img/digitallogo.png" alt="">
             </a>
         </li>
 
-        <li class="text-center text-uppercase fs-3  fw-bold font-monospace  py-3  list-group-item btn btn-secondary"><a
-                href="Home.php" class="text-decoration-none  text-white">
-                <table>
+        <li class="text-center br-bottom text-uppercase fs-3  fw-bold font-monospace  py-3  list-group-item btn btn-secondary"><a
+                href="home" class="text-decoration-none  text-white">
+                <table id="table">
                     <tr>
-                        <th>
+                        <th id="th">
                             <lord-icon src="https://cdn.lordicon.com/osuxyevn.json" trigger="hover"
                                 colors="primary:#fff" style="width:32px;height:32px">
                             </lord-icon>
-                        </th>
-                        <th> <span class="nav-item side-bar-hidden">Home </span></th>
+                        </th id="th">
+                        <th> <span class="nav-item side-bar-hidden text-white">Home </span></th>
                     </tr>
                 </table>
 
             </a>
         </li>
 
-        <li class="text-center py-3  text-uppercase fs-3  fw-bold font-monospace   list-group-item btn btn-secondary"><a
-                href="profile.php" class="text-decoration-none text-white">
-                <table>
+        <li class="text-center py-3 br-bottom text-uppercase fs-3  fw-bold font-monospace   list-group-item btn btn-secondary"><a
+                href="article" class="text-decoration-none text-white">
+                <table id="table">
                     <tr>
-                        <th><lord-icon src="https://cdn.lordicon.com/vufjamqa.json" trigger="hover"
+                        <th id="th"><lord-icon src="https://cdn.lordicon.com/vufjamqa.json" trigger="hover"
                                 colors="primary:#ffffff" style="width:32px;height:32px">
                             </lord-icon>
                         </th>
-                        <th>
-                            <span class="nav-item side-bar-hidden">Article </span>
+                        <th id="th">
+                            <span class="nav-item side-bar-hidden text-white">Article </span>
                         </th>
                     </tr>
                 </table>
             </a>
-        </li>
+        </li> <form method="post">
         <li
             class=" text-center py-1 text-uppercase fs-3  fw-bold font-monospace  list-group-item list-group-item-danger btn btn-secondary logout ">
-            <a href="../config/scripts.php?logOut=1" name="logOut" class="text-decoration-none text-white">
+            <button type="submit" name="logOut" class="btn btn-Secondary text-white">
 
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-item side-bar-hidden"> Log out </span>
-            </a>
-        </li>
+            </button>
+        </li></form>
     </ul>
 </nav>

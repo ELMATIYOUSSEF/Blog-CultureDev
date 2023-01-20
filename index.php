@@ -6,9 +6,9 @@ require_once './view/includes/header.php';
 
 $home = new HomeController();
 //all MY Page 
-$pages =['home','login','Singin'];
+$pages =['home','login','Singin','article'];
 // function for detecte wich page usr wont
-if(isset($_GET['page'])){
+if(isset($_GET['page'])&& @$_SESSION['admin']=='true'){
     if(in_array($_GET['page'],$pages)){
         $page=$_GET['page'];
         $home->index($page);
