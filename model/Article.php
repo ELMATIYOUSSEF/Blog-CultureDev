@@ -30,31 +30,29 @@ class Article
     
     static public function createArticle($data)
     {
-        $sql= 'insert into article (title,id_category,id_author,content,date_created) values(:title,:id_category,:id_author,:content,:date_created)';
+        $sql= 'insert into article (title,id_category,id_author,content,date_created,image) values(:title,:id_category,:id_author,:content,:date_created,:image)';
         $stmt  = database::connect()->prepare($sql);
         $stmt -> bindParam(':title',$data['title']);
         $stmt -> bindParam(':id_category', $data['id_category']);
         $stmt -> bindParam(':id_author',$data['id_author']);
         $stmt -> bindParam(':content',$data['content']);
         $stmt -> bindParam(':date_created',$data['date_created']);
+        $stmt -> bindParam(':image',$data['image']);
         try {
             $stmt -> execute();
             return 1 ;
         } catch (Exception $e) {
            return $e ;
         }
-        // $stmt->close();
-        // $stmt = NULL ;
     }
 
     static public function getAllArticle()
     {
-        $sql ="select * from article";
+        $sql ="SELECT ar.* , cat.name as categoryname , au.last_name as lastnameauthor FROM article ar JOIN author au on au.Id=ar.id_author JOIN category cat on cat.Id =ar.id_category";
         $stmt = database::connect() -> prepare($sql);
         $stmt -> execute();
         return $stmt->fetchAll();
-        // $stmt ->close();
-        // $stmt =null ;
+       
     }
 
     static public function updatArticle( $id)
@@ -79,8 +77,6 @@ class Article
         $stmt -> bindParam(':id',$id);
         $stmt -> execute();
         return $stmt->fetchAll();
-        // $stmt ->close();
-        // $stmt =null ;
     }
 
 

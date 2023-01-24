@@ -8,10 +8,15 @@ $home = new HomeController();
 //all MY Page 
 $pages =['home','login','Singin','article'];
 // function for detecte wich page usr wont
-if(isset($_GET['page'])&& @$_SESSION['admin']=='true'){
-    if(in_array($_GET['page'],$pages)){
-        $page=$_GET['page'];
-        $home->index($page);
+if(isset($_GET['page'])) {
+    if(in_array(@$_GET['page'],$pages)){
+        if($_GET['page']=='Singin'|| @$_SESSION['admin']=='true'){
+            $page=$_GET['page'];
+            $home->index($page);
+        }
+        else{
+            $home->index('login');
+        }
     }else{
         include('view/includes/404.php');
     }

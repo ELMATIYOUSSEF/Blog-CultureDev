@@ -12,6 +12,7 @@ class Admin extends Person
     public function __construct( string $first_name, string $last_name, string $password, string $email)
     {
         parent::__construct($first_name, $last_name);
+        //THIS PASS && EMAIL
     }
 
 

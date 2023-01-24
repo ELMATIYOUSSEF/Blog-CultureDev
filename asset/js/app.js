@@ -96,3 +96,39 @@ function deleteCategory(id){
         }
     });
 }
+ 
+
+
+
+// Prevent Bootstrap dialog from blocking focusin
+$(document).on('focusin', function(e) {
+    if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root").length) {
+      e.stopImmediatePropagation();
+    }
+  });
+ 
+
+
+
+    document.getElementById('addart').addEventListener("click",(e)=>{
+        // const article = document.getElementById('form1');
+        e.preventDefault();
+            const article = document.getElementById('form1');
+            const articles = document.getElementById('allForms');
+          
+          
+            let Copyarticle = article.cloneNode(true)
+            // Copyarticle.reset();
+            var newBtn = document.createElement("a");
+            newBtn.className = "btn btn-secondary";
+            newBtn.innerHTML = "Remove";
+            newBtn.addEventListener("click",function remove(){
+              Copyarticle.remove();
+            });
+          
+            Copyarticle.appendChild(newBtn);
+          
+            articles.appendChild(Copyarticle)
+          
+        }); 
+    
