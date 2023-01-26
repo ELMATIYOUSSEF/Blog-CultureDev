@@ -1,8 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
-
 class AdminController{
     public function get_C_AllAdmin(){
         $Admins= Admin::getAllAdmin();
@@ -14,8 +11,9 @@ class AdminController{
         $Admin= Admin::getAdminById( $id);
         return $Admin;
     }
-       
-    public function create_C_Admin(){
+
+    //  function for add admin
+public function create_C_Admin(){
         if (isset($_POST['SignUp'])) {
           
             $name = htmlspecialchars(trim($_POST['first_name']));
@@ -46,7 +44,17 @@ class AdminController{
             }
         }
 }
+    // delete article 
+    public static function delete_C_Admin($id){
+        $result= Admin::deleteAdmin($id);
+        if($result ==1){
+            Session::set('Success','Delete article avec success');
+            Redirect::to('article');
+        }
+        else echo $result ;
+    } 
     
+// function sign In 
 public function SignIn(){
     $email=$_POST['email'];
     $password=$_POST['password'];    

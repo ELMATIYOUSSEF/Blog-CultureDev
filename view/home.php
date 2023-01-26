@@ -49,6 +49,9 @@ try {
 
 $adminController = new AdminController();
 $admins = $adminController->get_C_AllAdmin();
+if(isset($_POST['Deletadmin'])){
+    $adminController->delete_C_Admin($_POST['Deletadmin']);
+}
  $home = new HomeController();
  $home->logout();
 
@@ -251,14 +254,13 @@ $admins = $adminController->get_C_AllAdmin();
                                 <?php if(empty($admins))
                                                             echo '<tr class="align-middle"><th class="col-3">No result found.</th> </tr>';
                                                         else{ foreach ($admins as $admin ){?>   
-                                               <tr class="align-middle" id="category<?=$admin['Id']?>"> 
+                                               <tr class="align-middle" id="admin<?=$admin['Id']?>"> 
                                                <td class="col-1 text-center"><?=$admin['Id'] ?></td>
                                                 <td class="col-1 text-center"><?=$admin['first_name'] ?></td>
                                                 <td id="" class="text-nowrap text-center"><?=$admin['last_name'] ?></td>
                                                 <td id="" class="text-nowrap text-center"><?=$admin['Email'] ?></td>
                                                 <td class="text-center">
-                                                <button onclick="Editadmin(<?=$admin['Id'];?>,'<?=$admin['first_name'] ?>','<?=$admin['last_name'] ?>','<?=$admin['Email'] ?>')" class="btn btn-sm btn-warning">Edit</button>
-                                                <button onclick="deleteadmin(<?=$admin['Id'] ; ?>)" class="btn btn-sm btn-danger">Delete</button></a>
+                                                  <button onclick="deleteadmin(<?=$admin['Id'] ; ?>)" class="btn btn-sm btn-danger">Delete</button></a>
                                                 </td>
                                             </tr> 
                                             <?php } }?>   

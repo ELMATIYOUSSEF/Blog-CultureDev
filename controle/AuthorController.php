@@ -1,5 +1,4 @@
 <?php
-// namespace model;
 
 class AuthorController{
     public function get_C_Allauthor(){

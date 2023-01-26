@@ -1,5 +1,5 @@
 <?php
-// namespace model;
+
 class database{
     static public function connect(){
         try {

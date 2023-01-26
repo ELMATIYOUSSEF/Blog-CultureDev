@@ -210,6 +210,37 @@ function addart(){
      });
    }
 
+//    delete admin 
+function deleteadmin(id){
+    Swal.fire({
+        background: '#1e1e2d',
+        color: '#F0F6FC',
+        title: 'Are you sure you want to delete this Category?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+        // after confirmation is succesfull
+        if (result.isConfirmed) {
+            Swal.fire({ background: '#1e1e2d', color: '#F0F6FC', title: 'Deleted!', text: 'Category has been deleted successfully. ', icon: 'error' });
+            // using ajax to send data without refresh
+            $.ajax({
+                url: 'home',
+                method: 'POST',
+                data: { Deletadmin: id },
+                dataType: 'html',
+                success: function () {
+                    // removing element from dom
+                    document.querySelector(`#admin${id}`).remove();
+                },
+            });
+        }
+    });
+}
+
 //    delete article 
 function deletearticle(id){
     Swal.fire({

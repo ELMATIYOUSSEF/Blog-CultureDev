@@ -1,7 +1,5 @@
 <?php
 
-// declare(strict_types=1);
-// namespace model;
 
 class Admin extends Person
 {
@@ -38,7 +36,7 @@ class Admin extends Person
     
     static public function deleteAdmin($id)
     {
-        $sql ="delete from admin where id=:id";
+        $sql ="delete from admin where Id=:id";
         $stmt = database::connect() -> prepare($sql);
         $stmt -> bindParam(':id',$id);
         $stmt -> execute();

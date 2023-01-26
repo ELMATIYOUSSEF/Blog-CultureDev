@@ -1,6 +1,5 @@
 <?php
 
-// namespace model;
 require_once dirname(__DIR__).'./DataBase/database.php';
 require_once dirname(__DIR__).'./model/Article.php';
 class ArticleController {
