@@ -12,6 +12,17 @@ if(isset($_POST['Updateauthor'])){
 }
 
 $author = $AuthorController->get_C_Allauthor();
+// count author
+try {
+    //code...
+        $countauthor=0;
+    foreach ($author as $key) {
+        $countauthor+=1;
+    }
+} catch (Exception $th) {
+    echo $th;
+}
+
 $CategoryController = new CategoryController();
 if(isset($_POST['addCategory'])){
  $CategoryController->create_C_Category();
@@ -24,6 +35,18 @@ if(isset($_POST['UpdateCategory'])){
 }
 $category =$CategoryController->get_C_AllCategory();
 
+// count author
+try {
+    //code...
+        $countcategory=0;
+    foreach ($category as $key) {
+        $countcategory+=1;
+    }
+} catch (Exception $th) {
+    echo $th;
+}
+
+
 $adminController = new AdminController();
 $admins = $adminController->get_C_AllAdmin();
  $home = new HomeController();
@@ -32,10 +55,10 @@ $admins = $adminController->get_C_AllAdmin();
  ?>
 
 <div class="row">
-    <div class="col-3 ">
+    <div class="col-3 nav">
     <?php require_once './view/includes/sidebar.php'?>
     </div>
-    <div class="col-9">
+    <div class="col-9 scrolling-div">
         
     <div class="container"> 
     <h3 class ="p-5">Pages <span>/</span> Home</h3> 
@@ -51,9 +74,9 @@ $admins = $adminController->get_C_AllAdmin();
                     <div class="row row-cols-1 w-100 row-cols-md-4 g-4 d-flex gap-5 justify-content-center align-items-center text-center">
                         <div class="col">
                                 <div class="card ">
-                                <h5 class="card-header text-center">Admin</h5>
+                                <h5 class="card-header text-center">Author</h5>
                                 <div class="card-body d-flex   bg-primary p-2 text-white bg-opacity-100 justify-content-around align-items-center  ">
-                                    <h1 class="card-title"></h1>
+                                    <h1 class="card-title"><?=$countauthor ;?></h1>
                                     <lord-icon
                                         src="https://cdn.lordicon.com/bhfjfgqz.json"
                                         trigger="hover"
@@ -67,7 +90,7 @@ $admins = $adminController->get_C_AllAdmin();
                             <div class="card ">
                                 <h5 class="card-header text-center">Article</h5>
                                 <div class="card-body bg-warning p-2 text-white bg-opacity-100 d-flex bg-success p-2 text-white bg-opacity-75 justify-content-around align-items-center  ">
-                                    <h1 class="card-title"></h1>
+                                    <h1 class="card-title"><?=@$_SESSION['countarticle'];?></h1>
                                     <lord-icon
                                     src="https://cdn.lordicon.com/vufjamqa.json"
                                         trigger="hover"
@@ -83,7 +106,7 @@ $admins = $adminController->get_C_AllAdmin();
                         <div class="card ">
                             <h5 class="card-header text-center">Category</h5>
                             <div class="card-body bg-success p-2 text-white bg-opacity-100 d-flex  justify-content-around align-items-center  ">
-                                <h1 class="card-title"></h1>
+                                <h1 class="card-title"><?=$countcategory ;?></h1>
                                 <lord-icon
                                     src="https://cdn.lordicon.com/svbmmyue.json"
                                     trigger="hover"
@@ -151,7 +174,7 @@ $admins = $adminController->get_C_AllAdmin();
 
     <!-- all author -->
     <h5 class="px-5 py-5"> <strong> ALL Author :</strong></h5>
-            <div class="card py-4 mx-3">
+            <div class="card py-4  table table-responsive">
                         <table class="table bg-white rounded shadow-sm  table-hover table-responsive">
                             <thead>
                                     <tr>
@@ -184,7 +207,7 @@ $admins = $adminController->get_C_AllAdmin();
     <!-- all Category -->
             
     <h5 class="px-5 py-5"> <strong> ALL Category :</strong></h5>
-            <div class="card py-4 mx-3">
+            <div class="card py-4 table table-responsive">
             <table class="table bg-white rounded shadow-sm  table-hover table-responsive">
                             <thead>
                                     <tr>
@@ -214,7 +237,7 @@ $admins = $adminController->get_C_AllAdmin();
     <!-- all Admin -->
             
     <h5 class="px-5 py-5"> <strong> ALL Admins :</strong></h5>
-            <div class="card py-4 mx-3">
+            <div class="card py-4  table table-responsive">
             <table class="table bg-white rounded shadow-sm  table-hover table-responsive">
                             <thead>
                                     <tr>

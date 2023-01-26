@@ -1,3 +1,11 @@
+:root {
+    /* --main-bg-color: #229d00; */
+    --sidebar-background-color: #00406d;
+    --second-text-color: #bbbec5;
+    --second-bg-color: #D3D3D3;
+  }
+  
+
 *{
     margin: 0;
     padding: 0;
@@ -8,16 +16,20 @@
     font-family: monospace;
 }
 /* sideBar */
+body{
+    overflow: hidden;
+}
 
 nav
 {
     position: sticky;
-    top: 0;
+    top: 0; 
+    left: 0;  
     height: 100vh;
     background: #222f34;
     overflow: hidden;
     border: 1px solid;
-    box-shadow: 1px 2px 15px rgb(0, 64, 109);
+    box-shadow: 1px 2px 15px var(--sidebar-background-color);
 }
 .side ul .br-bottom{
     border-bottom: solid 2px #3a4054c2;
@@ -43,4 +55,25 @@ nav
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+.scrolling-div {
+    overflow: scroll; 
+    height: 100vh; 
+  }
+  /* form validation  */
+.success input{
+    border-color: #09c372;
+}
+.error input{
+    border-color: #ff3860;
+}
+.errormsg{
+    color: #ff3860;
+    font-size: 11px;
+    height: 13px;
+}
+@media screen and (max-width: 550px){
+    .side-bar-hidden{
+       display: none;
+    }
 }

@@ -15,7 +15,7 @@
                             <lord-icon src="https://cdn.lordicon.com/osuxyevn.json" trigger="hover"
                                 colors="primary:#fff" style="width:32px;height:32px">
                             </lord-icon>
-                        </th id="th">
+                        </th >
                         <th> <span class="nav-item side-bar-hidden text-white">Home </span></th>
                     </tr>
                 </table>
@@ -31,7 +31,7 @@
                                 colors="primary:#ffffff" style="width:32px;height:32px">
                             </lord-icon>
                         </th>
-                        <th id="th">
+                        <th>
                             <span class="nav-item side-bar-hidden text-white">Article </span>
                         </th>
                     </tr>

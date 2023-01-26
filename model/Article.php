@@ -55,10 +55,33 @@ class Article
        
     }
 
-    static public function updatArticle( $id)
+    static public function updatArticle( $id ,$title,$id_category,$id_author,$content,$date_created,$image)
     {
-        
+        $sql = "UPDATE article SET title = :title, id_category = :id_category,id_author = :id_author,content = :content,date_created = :date_created,image = :image WHERE Id =$id";
+        $stmt = database::connect() -> prepare($sql);
+        $stmt -> bindParam(':title',$title);
+        $stmt -> bindParam(':id_category',$id_category);
+        $stmt -> bindParam(':id_author',$id_author);
+        $stmt -> bindParam(':content',$content);
+        $stmt -> bindParam(':date_created',$date_created);
+        $stmt -> bindParam(':image',$image);
+        $stmt -> execute();
+        return 1;
     }
+    
+    static public function updatArticlewithoutImage( $id,$title,$id_category,$id_author,$content,$date_created)
+    {
+        $sql = "UPDATE article SET title = :title, id_category = :id_category,id_author = :id_author,content = :content,date_created = :date_created WHERE Id =$id";
+        $stmt = database::connect() -> prepare($sql);
+        $stmt -> bindParam(':title',$title);
+        $stmt -> bindParam(':id_category',$id_category);
+        $stmt -> bindParam(':id_author',$id_author);
+        $stmt -> bindParam(':content',$content);
+        $stmt -> bindParam(':date_created',$date_created);
+        $stmt -> execute();
+        return 1;
+    }
+
 
     static public function deleteArticle($id)
     {
@@ -75,6 +98,14 @@ class Article
         $sql ="select * from article where id =:id";
         $stmt = database::connect() -> prepare($sql);
         $stmt -> bindParam(':id',$id);
+        $stmt -> execute();
+        return $stmt->fetchAll();
+    }
+
+    static public function searchArticle($art)
+    {
+        $sql ="SELECT ar.* , cat.name as categoryname , au.last_name as lastnameauthor FROM article ar JOIN author au on au.Id=ar.id_author JOIN category cat on cat.Id =ar.id_category where title LIKE '%$art%'";
+        $stmt = database::connect() -> prepare($sql);
         $stmt -> execute();
         return $stmt->fetchAll();
     }

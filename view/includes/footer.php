@@ -20,6 +20,8 @@
 <!-- *************** -->
 <!-- ********* my file js ************** -->
 <script src="../../BlogCultureDev/asset/js/app.js"></script>
+<!-- **** validation  -->
+<script src="../../BlogCultureDev/asset/js/formValidation.js"></script>
 <!-- ********* my file js ************** -->
 
 
